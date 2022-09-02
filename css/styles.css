@@ -7,12 +7,12 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #CBCE91FF, #EA738DFF);
+    background: rgb(0, 0, 0, 75%);
 }
 
 .calculator-grid {
     display: grid;justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
@@ -24,4 +24,16 @@ body {
     border: 1px solid #FFFFFF;
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid > button:hover {
+    background-color: #a9a9a9;
+}
+
+.span-two {
+    grid-column: two span;
+}
+
+.output {
+    grid-column: span -1;
 }
