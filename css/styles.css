@@ -7,14 +7,14 @@
 body {
     margin: 0;
     padding: 0;
-    background: rgb(0, 0, 0, 75%);
+    background: linear-gradient(to right, #CBCE91FF, #EA738DFF);
 }
 
 .calculator-grid {
-    display: flex;
+    display: grid;
     padding: 2px;
-    justify-content: space-around;
-    align-items: flex-end;
+    justify-content: center;
+    align-content: center;
     flex-direction: column;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
@@ -34,9 +34,12 @@ body {
 }
 
 .span-two {
-    grid-column: two span;
+    grid-column: span 2;
+    color: #adf802;
+    background-color: rgba(139, 0, 139, 0.8);
 }
 
 .output {
     grid-column: span -1;
+    background: rgb(0, 0, 0, 75%);
 }
