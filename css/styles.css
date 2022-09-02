@@ -11,8 +11,11 @@ body {
 }
 
 .calculator-grid {
-    display: grid;justify-content: center;
-    align-content: center;
+    display: flex;
+    padding: 2px;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: column;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
