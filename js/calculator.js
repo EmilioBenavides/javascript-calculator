@@ -34,7 +34,13 @@ function appendNumber(number) {
 }
 
 function chooseOperation(operation) {
-
+    if (this.currentOperand === '') return
+    if (this.previousOperaq !== '') {
+        this.compute()
+    }
+    this.operation = operation
+    this.previousOperand = this.currentOperand
+    this.currentOperand = ''
 }
 
 function compute() {
@@ -43,6 +49,7 @@ function compute() {
 
 function updateDisplay() {
 this.currentOperandTextElement.innerText = this.currentOperand
+    this.previousOperandTextElement = this.previousOperand
 }
 
 numberButtons.forEach(button => {
@@ -58,6 +65,8 @@ operationButtons.forEach(button => {
         calculator.updateDisplay()
     })
 })
+
+
 
 
 
