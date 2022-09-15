@@ -24,7 +24,7 @@ function clear() {
     this.operation = undefined
 };
 
-delete() {
+function deleteInput() {
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
 };
 
@@ -50,11 +50,13 @@ function chooseOperation(operation) {
 
 
 function updateDisplay() {
+    this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
+    this.previousOperandTextElement = this.previousOperand
     if (this.operation != null) {
         this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+    } else {
+        this.previousOperandTextElement.innerText = ''
     }
-this.currentOperandTextElement.innerText = this.currentOperand
-    this.previousOperandTextElement = this.previousOperand
 };
 
 
@@ -110,9 +112,16 @@ allClearButton.addEventListener('click', button => {
 });
 
 deleteButton.addEventListener('click', button => {
-    calculator.delete()
+    calculator.deleteInput()
     calculator.updateDisplay()
 });
+
+function getDisplayNumber(number) {
+    const floatNumber = parseFloat(number)
+    if (isNaN(floatNumber)) return ''
+    return floatNumber.toLocaleString('en')
+};
+
 
 
 
