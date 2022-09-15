@@ -22,16 +22,16 @@ function clear() {
     this.currentOperand = ''
     this.previousOperand = ''
     this.operation = undefined
-}
+};
 
-function delete() {
-
-}
+delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1)
+};
 
 function appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.'))
         return this.currentOperand = this.currentOperand.toString() + number.toString()
-}
+};
 
 function chooseOperation(operation) {
     if (this.currentOperand === '') return
@@ -41,35 +41,42 @@ function chooseOperation(operation) {
     this.operation = operation
     this.previousOperand = this.currentOperand
     this.currentOperand = ''
-}
+};
+//
+// function compute() {
+//
+// };
 
-function compute() {
 
-}
 
 function updateDisplay() {
+    if (this.operation != null) {
+        this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+    }
 this.currentOperandTextElement.innerText = this.currentOperand
     this.previousOperandTextElement = this.previousOperand
-}
+};
+
+
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })
-})
+});
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText)
         calculator.updateDisplay()
     })
-})
+});
 
 equalsButton.addEventListener('click', button => {
     calculator.compute()
     calculator.updateDisplay()
-})
+});
 
 function compute() {
     let computation;
@@ -95,7 +102,18 @@ function compute() {
     this.currentOperand = computation
     this.operation = undefined
     this.previousOperand = ''
-}
+};
+
+allClearButton.addEventListener('click', button => {
+    calculator.clear()
+    calculator.updateDisplay()
+});
+
+deleteButton.addEventListener('click', button => {
+    calculator.delete()
+    calculator.updateDisplay()
+});
+
 
 
 
